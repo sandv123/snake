@@ -30,12 +30,12 @@ DOWN = (0, 1)
 # Screen dimensions
 GRID_STEPS = 29
 GRID_WIDTH = 20
-GRID_HIGHT = 20
+GRID_HEIGHT = 20
 SCREEN_WIDTH = GRID_STEPS * GRID_WIDTH
-SCREEN_HIGHT = GRID_STEPS * GRID_HIGHT
+SCREEN_HEIGHT = GRID_STEPS * GRID_HEIGHT
 
 class GameLogic:
-    grid = [EMPTY_SPACE] * (GRID_WIDTH * GRID_HIGHT)
+    grid = [EMPTY_SPACE] * (GRID_WIDTH * GRID_HEIGHT)
 
     snakeDir: tuple = LEFT
     snakePos = (0, 0)
@@ -46,7 +46,7 @@ class GameLogic:
     def __init__(self) -> None:
         self._game_over = False
         random.seed
-        self.snakePos = (random.randint(1, GRID_WIDTH-1), random.randint(1, GRID_HIGHT-1))
+        self.snakePos = (random.randint(1, GRID_WIDTH-1), random.randint(1, GRID_HEIGHT-1))
         (taili, tailj) = tuple(map(sub, self.snakePos, self.snakeDir))
         self.snakeTail.append((taili,tailj))
 
@@ -57,7 +57,7 @@ class GameLogic:
         self.new_apple()
 
     def new_apple(self):
-        self.applePos = (applei, applej) = (random.randint(1, GRID_WIDTH-1), random.randint(1, GRID_HIGHT-1))
+        self.applePos = (applei, applej) = (random.randint(1, GRID_WIDTH-1), random.randint(1, GRID_HEIGHT-1))
         self.set_item(applei, applej, APPLE)
 
     def get_item(self, i, j):
@@ -67,7 +67,7 @@ class GameLogic:
         self.grid[j*GRID_WIDTH + i] = item
     
     def clear_grid(self):
-        self.grid = [EMPTY_SPACE] * (GRID_WIDTH * GRID_HIGHT)
+        self.grid = [EMPTY_SPACE] * (GRID_WIDTH * GRID_HEIGHT)
 
     def update_grid(self):
         (i, j) = self.snakePos
@@ -88,7 +88,7 @@ class GameLogic:
             nextj = GRID_WIDTH-1
         if(nexti > GRID_WIDTH-1):
             nexti = 0
-        if(nextj > GRID_HIGHT-1):
+        if(nextj > GRID_HEIGHT-1):
             nextj = 0
 
         if(self.get_item(nexti, nextj) == EMPTY_SPACE):
@@ -134,7 +134,7 @@ class GameLogic:
                                              GRID_STEPS),
                                              1)
     def render(self, surface):
-        for j in range(0, GRID_HIGHT):
+        for j in range(0, GRID_HEIGHT):
             for i in range(0, GRID_WIDTH):
                 self.draw_shape(surface, i, j)
 
@@ -149,5 +149,5 @@ class GameLogic:
             self.snakeDir = RIGHT
         
 if __name__ == "__main__" :
-    theApp = app.App(GameLogic(), SCREEN_WIDTH, SCREEN_HIGHT, BACKGROUND_COLOR, FPS)
+    theApp = app.App(GameLogic(), SCREEN_WIDTH, SCREEN_HEIGHT, BACKGROUND_COLOR, FPS)
     theApp.on_execute()

@@ -4,13 +4,13 @@ import time
 RED = (255, 0, 0)
 
 class App:
-    def __init__(self, game, screen_width, screen_hight, background_color, fps):
+    def __init__(self, game, screen_width, screen_height, background_color, fps):
         self._running = True
         #self._display_surf = None
-        self.size = self.weight, self.height = screen_width, screen_hight
+        self.size = self.weight, self.height = screen_width, screen_height
         self.game = game
         self.screen_width = screen_width
-        self.screen_hight = screen_hight
+        self.screen_height = screen_height
         self.background_color = background_color
         self.mspf = (1/fps)*1000
 
@@ -62,8 +62,8 @@ class App:
                 time.sleep(0.10)
 
             if(self.game._game_over):
-                pygame.draw.line(self._display_surf, RED, (0,0), (self.screen_width-1, self.screen_hight-1), 25)
-                pygame.draw.line(self._display_surf, RED, (self.screen_width-1,0), (0, self.screen_hight-1), 25)
+                pygame.draw.line(self._display_surf, RED, (0,0), (self.screen_width-1, self.screen_height-1), 25)
+                pygame.draw.line(self._display_surf, RED, (self.screen_width-1,0), (0, self.screen_height-1), 25)
                 pygame.display.flip()
                 time.sleep(0.10)
 
