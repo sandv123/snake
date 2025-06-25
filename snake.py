@@ -138,15 +138,16 @@ class SnakeGameLogic:
             for i in range(0, GRID_WIDTH):
                 self.draw_shape(surface, i, j)
 
-    def process_event(self, event):
-        if(event.key == pygame.K_UP and self.snakeDir != DOWN):
-            self.snakeDir = UP
-        if(event.key == pygame.K_DOWN and self.snakeDir != UP):
-            self.snakeDir = DOWN
-        if(event.key == pygame.K_LEFT and self.snakeDir != RIGHT):
-            self.snakeDir = LEFT
-        if(event.key == pygame.K_RIGHT and self.snakeDir != LEFT):
-            self.snakeDir = RIGHT
+    def process_event(self, event: pygame.event.Event):
+        if event.type == pygame.KEYDOWN:
+            if(event.key == pygame.K_UP and self.snakeDir != DOWN):
+                self.snakeDir = UP
+            if(event.key == pygame.K_DOWN and self.snakeDir != UP):
+                self.snakeDir = DOWN
+            if(event.key == pygame.K_LEFT and self.snakeDir != RIGHT):
+                self.snakeDir = LEFT
+            if(event.key == pygame.K_RIGHT and self.snakeDir != LEFT):
+                self.snakeDir = RIGHT
         
 if __name__ == "__main__" :
     theApp = app.App(SnakeGameLogic(), SCREEN_WIDTH, SCREEN_HEIGHT, BACKGROUND_COLOR, FPS)

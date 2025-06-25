@@ -32,7 +32,9 @@ class App:
             if(self._tick == True):
                 self.game.process_event(event)
                 self._tick = False
-
+        if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP or event.type == pygame.MOUSEMOTION:
+            self.game.process_event(event)
+            
     def on_loop(self):
         self.game.tick()
 
