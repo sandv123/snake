@@ -59,7 +59,7 @@ class App:
                 self.on_loop()
                 self.on_render()
             else:
-                time.sleep(0.10)
+                time.sleep(self.mspf/1000)
 
             if(self.game._game_over):
                 pygame.draw.line(self._display_surf, RED, (0,0), (self.screen_width-1, self.screen_height-1), 25)
