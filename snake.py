@@ -34,7 +34,7 @@ GRID_HEIGHT = 20
 SCREEN_WIDTH = GRID_STEPS * GRID_WIDTH
 SCREEN_HEIGHT = GRID_STEPS * GRID_HEIGHT
 
-class GameLogic:
+class SnakeGameLogic:
     grid = [EMPTY_SPACE] * (GRID_WIDTH * GRID_HEIGHT)
 
     snakeDir: tuple = LEFT
@@ -149,5 +149,5 @@ class GameLogic:
             self.snakeDir = RIGHT
         
 if __name__ == "__main__" :
-    theApp = app.App(GameLogic(), SCREEN_WIDTH, SCREEN_HEIGHT, BACKGROUND_COLOR, FPS)
+    theApp = app.App(SnakeGameLogic(), SCREEN_WIDTH, SCREEN_HEIGHT, BACKGROUND_COLOR, FPS)
     theApp.on_execute()
