@@ -168,3 +168,4 @@ class SnakeGameLogic:
 if __name__ == "__main__" :
     # Run the game if this file is executed directly
     theApp = app.App(SnakeGameLogic(), SCREEN_WIDTH, SCREEN_HEIGHT, BACKGROUND_COLOR, FPS)
+    theApp.on_execute()
